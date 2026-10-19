@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Checkpriv - verificador de dados pessoais",
+  "version": "1",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "description": "Pesquisa de mestrado - Igor Castilho Valenciano (PPGCOMP)",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "pdf.min.js",
+        "tesseract.min.js",
+        "content.js"
+      ],
+      "all_frames": true,
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [ 
+        "pdf.worker.min.js",
+        "tesseract-worker.min.js",
+	"cadeado.svg",
+        "por.traineddata"
+      ],
+      "matches": [ "<all_urls>" ]
+    }
+  ]
+}
