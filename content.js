@@ -689,7 +689,7 @@ const analisarPDFInternoDoSEI = async (urlMapeada) => {
 
 let workerOCR = null;
 
-const processarArquivoPDF = async (file) => {
+const processarUploadPDF = async (file) => {
     const isPDF =
         file.type === 'application/pdf' ||
         file.name.toLowerCase().endsWith('.pdf');
@@ -1078,7 +1078,7 @@ if (estaNoSEI) {
             return;
         }
 
-        processarArquivoPDF(input.files[0]);
+        processarUploadPDF(input.files[0]);
     }, true);
 }
 
