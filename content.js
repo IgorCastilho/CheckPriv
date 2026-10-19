@@ -77,13 +77,11 @@ const registrarUsoMetrica = () => {
     }
 };
 
-const registrarFeedback = (resposta, statusAnalise) => {
+const registrarFeedback = (resposta) => {
     try {
         const historico = JSON.parse(localStorage.getItem('checkpriv_feedbacks') || '[]');
         historico.push({
-            dataHora: new Date().toISOString(),
-            resposta: resposta,
-            statusAnalise: statusAnalise
+            resposta: resposta
         });
         localStorage.setItem('checkpriv_feedbacks', JSON.stringify(historico));
     } catch (e) {
@@ -237,13 +235,13 @@ const atualizarUI = (status, titulo, message) => {
 
     if (btnSim && btnNao) {
         btnSim.addEventListener('click', () => {
-            registrarFeedback('sim', status);
+            registrarFeedback('sim');
             boxFeedback.innerHTML = '<span style="color: #2e7d32; font-weight: bold;">Obrigado pelo feedback! 🙏</span>';
             agendarFechamentoPosFeedback();
         });
 
         btnNao.addEventListener('click', () => {
-            registrarFeedback('nao', status);
+            registrarFeedback('nao');
             boxFeedback.innerHTML = '<span style="color: #555;">Obrigado pelo retorno!</span>';
             agendarFechamentoPosFeedback();
         });
